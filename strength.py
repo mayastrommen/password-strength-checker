@@ -1,3 +1,4 @@
+import math
 import string
 
 def character_pool_size(password):
@@ -11,3 +12,9 @@ def character_pool_size(password):
     if any(c in string.punctuation for c in password):
         pool += len(string.punctuation)
     return pool
+
+def estimate_entropy(password):
+    pool = character_pool_size(password)
+    if pool == 0:
+        return 0.0
+    return len(password) * math.log2(pool)
